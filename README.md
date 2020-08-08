@@ -1,17 +1,20 @@
-# Getting Started with Node, Typescript and Docker
+# Tutorial Start
 
-This guide will show you how to build a barebones Node project with the following goodies:
+This guide will show you how to build a barebones Node project from scratch with the following goodies:
   - Typescript support
-  - Containerize the project with Docker
-  - Check code quality with ESLint
-  - Format code with Prettier
+  - App containerization with Docker
+  - Code reload with Nodemon
+  - Code quality checking with ESLint
+  - Code formatting with Prettier
 
 Pre-requisites:
 
 - Node is installed
+- Docker is installed
+- You are using a debian based Linux distro
 - Optional: You are using VSCode for your editor
 
-## Setup 1 - Node Setup
+## Node Setup
 
 Let's set up a barebones Node project
 
@@ -60,7 +63,7 @@ Which gives you some console output:
 
     Hello World
 
-## Step 2 - Typescript Setup
+## Typescript Setup
 
 Lets add Typescript to our barebones Node project.
 
@@ -97,13 +100,10 @@ npx tsc --init
 
 We use `npx` which executes locally installed binaries we installed from `package.json`.
 
-Just a warning about installing typescript globally, as some guides will recommend. Which is done with the following command:
-
-```bash
-sudo npm install -g typescript
-```
-
-The global version may end up differing from the local version installed for your project. Running `tsc` directly uses the global version. When `tsc` is run as part of npm in your project, it uses the local version.
+> [!WARNING]
+> Some installation guides will recommend installing Typescript globally `sudo npm install -g typescript`.
+>
+>The global version may end up differing from the local version installed for your >project. Running `tsc` directly uses the global version. When `tsc` is run as part >of npm in your project, it uses the local version.
 
 There are several options set by default in `tsconfig.json`. There is a lot of commented out options - not shown below.
 
@@ -175,35 +175,7 @@ console.log('Hello World!');
 
 You are now ready to build Javascript projects with Typescript!
 
-## Step 3 - Auto Code Reload with Nodemon
-
-Set up automatic reload after code changes for development. Install `nodemon` to monitor for file changes and `ts-node` to run the typescript code directly instead of having to compile and then pass on to `node`.
-
-
-```bash
-npm install --save-dev ts-node nodemon
-```
-
-Add a `nodemon.json` config. This will configure nodemon to watch for changes to .ts and .js files inside your source code directory and then run the exec command after the changes.
-
-```json
-{
-  "watch": ["src"],
-  "ext": ".ts,.js",
-  "ignore": [],
-  "exec": "ts-node ./src/index.ts"
-}
-```
-
-Add a npm script inside of `package.json` to kick off `nodemon` for development:
-
-```json
-  "start:dev": "nodemon"
-```
-
-Run `npm run start:dev` to start the reload process.
-
-## Step 4 - Find & Fix Code Issues with ESLint
+## Find & Fix Code Issues with ESLint
 
 https://eslint.org
 
@@ -379,7 +351,7 @@ const movies = [
 movies.pop();
 ```
 
-## Step 5 - Format Code with Prettier
+## Format Code with Prettier
 
 We'll use Prettier to format code. It's an opinionated code formatter that supports many languages including Typescript, Javascript and other formats you may use for configs like JSON and YAML.
 
@@ -478,7 +450,7 @@ If all goes well, you should get the following respone:
 No rules that are unnecessary or conflict with Prettier were found.
 ```
 
-## Step 6 - Install VSCode Plugins
+## Install VSCode Plugins
 
 ### ESLint
 
@@ -494,7 +466,7 @@ Search for the below plugin:
 
 Press `Ctrl + Shift + I` to format code. You'll be prompted to select the default formatter. Select Prettier as your default.
 
-## Step 7 - Add Node Scripts
+## Add Node Scripts
 
 These scripts are tailored to our typescript project. We are only checking .ts files.
 
@@ -517,7 +489,7 @@ Add the below commands to the `scripts` section of your `package.json`.
 "pretty": "prettier --write 'src/**/*.ts'"
 ```
 
-## Step 8 - Node API Framework with Curveball
+## API Framework with Curveball
 
 Curveball is a micro framework for building APIs in node. It's built from the ground up with support for Typescript as opposed to its more popular predecessor Koa.
 
@@ -563,7 +535,35 @@ You will get the following output as nodemon listens to file changes:
 
 After making a code change, watch the server console output to be nodemon at work. Also refresh the webpage to see updates.
 
-## Step 9 - Containerize the App with Docker
+## Auto Code Reload with Nodemon
+
+Set up automatic reload after code changes for development. Install `nodemon` to monitor for file changes and `ts-node` to run the typescript code directly instead of having to compile and then pass on to `node`.
+
+
+```bash
+npm install --save-dev ts-node nodemon
+```
+
+Add a `nodemon.json` config. This will configure nodemon to watch for changes to .ts and .js files inside your source code directory and then run the exec command after the changes.
+
+```json
+{
+  "watch": ["src"],
+  "ext": ".ts,.js",
+  "ignore": [],
+  "exec": "ts-node ./src/index.ts"
+}
+```
+
+Add a npm script inside of `package.json` to kick off `nodemon` for development:
+
+```json
+  "start:dev": "nodemon"
+```
+
+Run `npm run start:dev` to start the reload process.
+
+## Containers with Docker
 
 Install docker and lookup instructions on how to run docker without sudo - instructions omitted here as they are OS / distro specific.
 
@@ -625,37 +625,9 @@ Step 3/7 : COPY package.json .
 Step 4/7 : RUN npm install
  ---> Running in 8b814e4d75d2
 
-> core-js-pure@3.6.5 postinstall /project/node_modules/core-js-pure
-> node -e "try{require('./postinstall')}catch(e){}"
-
-Thank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!
-
-The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:
-> https://opencollective.com/core-js
-> https://www.patreon.com/zloirock
-
-Also, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)
-
-
-> nodemon@2.0.4 postinstall /project/node_modules/nodemon
-> node bin/postinstall || exit 0
-
-Love nodemon? You can now support the project via the open collective:
- > https://opencollective.com/nodemon/donate
-
-npm notice created a lockfile as package-lock.json. You should commit this file.
-npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.1.2 (node_modules/chokidar/node_modules/fsevents):
-npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
-npm WARN eslint-config-airbnb@18.2.0 requires a peer of eslint-plugin-react-hooks@^4 || ^3 || ^2.3.0 || ^1.7.0 but none is installed. You must install peer dependencies yourself.
-npm WARN project@1.0.0 No description
-npm WARN project@1.0.0 No repository field.
-
-added 348 packages from 267 contributors and audited 350 packages in 14.763s
-
-43 packages are looking for funding
-  run `npm fund` for details
-
-found 0 vulnerabilities
+...
+(Node package installation happens here)
+...
 
 Removing intermediate container 8b814e4d75d2
  ---> 3bfd2b1a83e4
@@ -692,6 +664,16 @@ Use `docker-compose up -d` to bring the container up in detached mode - it's bro
 
 We are creating a container based on node v12. Our working directory inside the container is defined as `/project` (where our project code will be mapped to)
 
+## Reference
 
+### Node Scripts
+
+## Credit
+
+A big thanks to the following for helping me create this tutorial.
+
+- Static document generator [Docsify](https://docsify.js.org)
+- Hosting on [Netlify](https://www.netlify.com/)
+- Alerts plugin for Docsify: https://github.com/fzankl/docsify-plugin-flexible-alerts
 
 
