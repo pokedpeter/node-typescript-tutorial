@@ -1,5 +1,8 @@
 # Tutorial Start
 
+Coming from Github? A better viewing experience of this tutorial can be had at the site below:
+https://pokedpeter.dev
+
 This guide will show you how to build a barebones Node project from scratch with the following goodies:
   - Typescript support
   - App containerization with Docker
