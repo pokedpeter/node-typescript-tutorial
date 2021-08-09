@@ -102,7 +102,7 @@ Initialise typescript by running the following command. This will create a `tsco
 npx tsc --init
 ```
 
-We use `npx` which executes locally installed binaries we installed from `package.json`.
+We use `npx` which executes locally installed binaries that have been installed via `package.json`.
 
 > [!WARNING]
 > Some installation guides will recommend installing Typescript globally `sudo npm install -g typescript`.
