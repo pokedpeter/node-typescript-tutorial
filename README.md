@@ -1,5 +1,8 @@
 # Tutorial Start
 
+### Changelog
+2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
+
 Coming from Github? A better viewing experience of this tutorial can be had at the site below:
 
 https://pokedpeter.dev
@@ -461,8 +464,7 @@ Since we are using Typescript, we'll need another plugin to add. Include it afte
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "prettier", // <-- Add this
-    "prettier/@typescript-eslint" // <-- Add this too
+    "prettier" // <-- Add this
   ],
 }
 ```
@@ -470,7 +472,7 @@ Since we are using Typescript, we'll need another plugin to add. Include it afte
 You can run the following command on any file to check that there's no conflict between ESLint and Prettier:
 
 ```bash
-npx eslint --print-config src/index.ts | npx eslint-config-prettier-check
+npx eslint-config-prettier src/index.ts
 ```
 
 If all goes well, you should get the following respone:
