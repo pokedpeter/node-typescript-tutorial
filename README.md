@@ -443,7 +443,7 @@ src/index.ts 279ms
 
 ### Make Prettier and ESLint Work Together
 
-If ESLint can formats code... and Prettier formats code, you can expect some conflicts to occur. Prettier has created rules specifically for ESLint that basically disables any rules that are unnecessary or conflicting when combined with Prettier.
+Given both ESLint and Prettier can format code, you can expect some conflicts to occur. Prettier has created rules specifically for ESLint that basically disables any rules that are unnecessary or conflicting when combined with Prettier.
 
 The first is a plugin which runs Prettier as a ESLint rule and reports differences as individual ESLint issues.
 
