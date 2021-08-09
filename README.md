@@ -3,6 +3,8 @@
 ### Changelog
 2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
 
+## Welcome!
+
 Coming from Github? A better viewing experience of this tutorial can be had at the site below:
 
 https://pokedpeter.dev
