@@ -105,9 +105,9 @@ npx tsc --init
 We use `npx` which executes locally installed binaries that have been installed via `package.json`.
 
 > [!WARNING]
-> Some installation guides will recommend installing Typescript globally `sudo npm install -g typescript`.
+> Some installation guides will recommend installing Typescript globally `sudo npm install -g typescript`. I'd recommend to install a local version (ie. inside your project folder)
 >
->The global version may end up differing from the local version installed for your >project. Running `tsc` directly uses the global version. When `tsc` is run as part >of npm in your project, it uses the local version.
+>The global version may end up differing from the local version installed for your project. Running `tsc` directly uses the global version. When `tsc` is run as part of npm in your project, it uses the local version.
 
 There are several options set by default in `tsconfig.json`. There is a lot of commented out options - not shown below.
 
