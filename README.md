@@ -266,10 +266,31 @@ build
 
 We don't want linting on our compiled javascript code.
 
-Try removing a semi-colon from the end of the line in index.ts and do the lint check to see an error.
+By default, the standard rules are enabled. See the ticked items in the list at:
+
+https://eslint.org/docs/rules/
+
+For example, let's try breaking the `no-extra-semi` rule.
+
+Try adding a semi-colon to the end of the line in index.ts and do the lint check to see an error:
+
+```typescript
+console.log('Hello typescript');;
+```
+
+And then:
 
 ```bash
 npx eslint src
+```
+
+Which results in:
+
+```
+  1:34  error  Unnecessary semicolon  @typescript-eslint/no-extra-semi
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
 ```
 
 ### Adding linting rules
