@@ -13,12 +13,12 @@ This guide will show you how to build a barebones Node project from scratch with
 
 Pre-requisites:
 
-- Node is installed
+- Node is installed.
 - Docker is installed
 - You are using a debian based Linux distro
 - Optional: You are using VSCode for your editor
 
-## Node Setup
+## Node / Javascript Project Setup
 
 Let's set up a barebones Node project
 
@@ -83,7 +83,7 @@ Install Typescript type definitions for Node:
 npm install --save-dev @types/node
 ```
 
-Have a look at the dependencies in `composer.json`:
+Have a look at the dependencies in `package.json`:
 
 ```json
 {
@@ -667,6 +667,14 @@ You can use `CTRL-C` to stop the container.
 Use `docker-compose up -d` to bring the container up in detached mode - it's brought up in the brackground and you're free to continue using the command line.
 
 We are creating a container based on node v12. Our working directory inside the container is defined as `/project` (where our project code will be mapped to)
+
+## Install a specific version of Node
+
+The version of node installed will depend on the OS installed and how up to date its packages are.
+
+If you use Node outside of the docker containers and work on multiple Node projects each requiring different versions of Node then install nvm:
+
+https://github.com/nvm-sh/nvm
 
 ## Reference
 
