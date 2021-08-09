@@ -136,12 +136,16 @@ There are several options set by default in `tsconfig.json`. There is a lot of c
 Some recommended tweaks to the defaults:
 
 ```json
-"target": "es2020",     // The default target is way too old for a node project, target at least es2016:
+"target": "es2015",     // I'd recommend es2015 at a minimum. es5 is ancient.
 "outDir": "build",      // Keep our compiled javascript in the build directory
 "rootDir": "src",       // Keep our source code in a separate directory
 "noImplicitAny": true,  // We're using Typescript yeah? And not adding Typescript to an existing project. Enforce good habits from the start.
 "lib": ["es2020"],      // Setting this excludes DOM typings as we are using Node. Otherwise you'll run into errors declaring variables like 'name'
 ```
+
+In regard to `target`. Generally newer versions of node will support the newer ECMA features. The below website is a great resource to see what ECMA features are available to each version of Node:
+
+https://node.green/
 
 No need for index.js anymore:
 
