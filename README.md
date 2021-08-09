@@ -408,7 +408,7 @@ Create an ignore file. This lets the prettier cli and editors know which files t
 touch .prettierignore
 ```
 
-Contents of .prettierignore:
+Add the following lines to `.prettierignore`:
 ```bash
 node_modules
 build
