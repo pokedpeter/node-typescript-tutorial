@@ -290,10 +290,10 @@ If you opt to use a popular style guide, you'll then have a choice from the foll
   XO: https://github.com/xojs/eslint-config-xo
 ```
 
-Airbnb: https://github.com/airbnb/javascript
-Standard: https://github.com/standard/standard
-Google: https://github.com/google/eslint-config-google
-XO: https://github.com/xojs/eslint-config-xo
+- Airbnb: https://github.com/airbnb/javascript
+- Standard: https://github.com/standard/standard
+- Google: https://github.com/google/eslint-config-google
+- XO: https://github.com/xojs/eslint-config-xo
 
 I'd recommend researching the above style guides and go with one that aligns with your preferences.
 
