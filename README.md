@@ -1,4 +1,4 @@
-# Tutorial Start
+# Tutorial start
 
 ### Changelog
 2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
@@ -23,7 +23,7 @@ Pre-requisites:
 - You are using a debian based Linux distro
 - Optional: You are using VSCode for your editor
 
-## Node / Javascript Project Setup
+## Node / Javascript project setup
 
 Let's set up a barebones Node project
 
@@ -72,7 +72,7 @@ Which gives you some console output:
 
     Hello World
 
-## Typescript Setup
+## Typescript setup
 
 Lets add Typescript to our barebones Node project.
 
@@ -188,13 +188,17 @@ console.log('Hello World!');
 
 You are now ready to build Javascript projects with Typescript!
 
-## Find & Fix Code Issues with ESLint
-
-https://eslint.org
+## Find & fix code issues with ESLint
 
 ### Command line linting
 
 Until recently, tslint was the go-to Typescript code linter but it's now deprecated as the project has been consolidated into eslint. Here's the official homepage:
+
+Website:
+
+https://eslint.org
+
+The Github site:
 
 https://github.com/typescript-eslint/typescript-eslint
 
@@ -256,6 +260,45 @@ Using the options selected above, our .eslintrc.json file looks like this:
 }
 ```
 
+### Coding style guides
+
+You might have noticed one of the questions during the eslint init process was this:
+
+```bash
+? How would you like to use ESLint? …
+  To check syntax only
+▸ To check syntax and find problems
+  To check syntax, find problems, and enforce code style
+```
+
+The last option additionally enforces a code style. If you select that option, a follow up question will be:
+
+```bash
+? How would you like to define a style for your project? …
+▸ Use a popular style guide
+  Answer questions about your style
+  Inspect your JavaScript file(s)
+```
+
+If you opt to use a popular style guide, you'll then have a choice from the following:
+
+```bash
+? Which style guide do you want to follow? …
+▸ Airbnb: https://github.com/airbnb/javascript
+  Standard: https://github.com/standard/standard
+  Google: https://github.com/google/eslint-config-google
+  XO: https://github.com/xojs/eslint-config-xo
+```
+
+Airbnb: https://github.com/airbnb/javascript
+Standard: https://github.com/standard/standard
+Google: https://github.com/google/eslint-config-google
+XO: https://github.com/xojs/eslint-config-xo
+
+I'd recommend researching the above style guides and go with one that aligns with your preferences.
+
+### ESLint ignore file
+
 Next, we'll create another config file in plaint text to allow us to exclude files and directories from linting:
 
 ```bash
@@ -270,6 +313,8 @@ build
 ```
 
 We don't want linting on our compiled javascript code.
+
+### Breaking the rules
 
 By default, the standard rules are enabled. See the ticked items in the list at:
 
@@ -367,7 +412,7 @@ Now we should see the following warning:
   0 errors and 1 warning potentially fixable with the `--fix` option.
 ```
 
-### Fix Linter Issues
+### Fix linter issues
 
 Note in the output there's an option to fix the issue. Try running the linter with the `--fix` option:
 
@@ -385,7 +430,7 @@ const movies = [
 movies.pop();
 ```
 
-## Format Code with Prettier
+## Format code with Prettier
 
 We'll use Prettier to format code. It's an opinionated code formatter that supports many languages including Typescript, Javascript and other formats you may use for configs like JSON and YAML.
 
@@ -446,7 +491,7 @@ This will list the files that have been formatted:
 src/index.ts 279ms
 ```
 
-### Make Prettier and ESLint Work Together
+### Make Prettier and ESLint work together
 
 Given both ESLint and Prettier can format code, you can expect some conflicts to occur. Prettier has created rules specifically for ESLint that basically disables any rules that are unnecessary or conflicting when combined with Prettier.
 
@@ -483,7 +528,7 @@ If all goes well, you should get the following respone:
 No rules that are unnecessary or conflict with Prettier were found.
 ```
 
-## Install VSCode Plugins
+## Install VSCode plugins
 
 ### ESLint
 
@@ -499,7 +544,7 @@ Search for the below plugin:
 
 Press `Ctrl + Shift + I` to format code. You'll be prompted to select the default formatter. Select Prettier as your default.
 
-## Add Node Scripts
+## Add Node scripts
 
 These scripts are tailored to our typescript project. We are only checking .ts files.
 
@@ -522,7 +567,7 @@ Add the below commands to the `scripts` section of your `package.json`.
 "pretty": "prettier --write 'src/**/*.ts'"
 ```
 
-## API Framework with Curveball
+## API framework with Curveball
 
 Curveball is a micro framework for building APIs in node. It's built from the ground up with support for Typescript as opposed to its more popular predecessor Koa.
 
@@ -568,7 +613,7 @@ You will get the following output as nodemon listens to file changes:
 
 After making a code change, watch the server console output to be nodemon at work. Also refresh the webpage to see updates.
 
-## Auto Code Reload with Nodemon
+## Auto code reload with Nodemon
 
 Set up automatic reload after code changes for development. Install `nodemon` to monitor for file changes and `ts-node` to run the typescript code directly instead of having to compile and then pass on to `node`.
 
