@@ -102,7 +102,7 @@ Have a look at the dependencies in `package.json`:
 }
 ```
 
-Initialise typescript by running the following command. This will create a `tsconfig.json` file with default settings:
+Initialise typescript by running the following command anywhere within your project. This will create a `tsconfig.json` file with default settings:
 
 ```bash
 npx tsc --init
@@ -261,7 +261,7 @@ Using the options selected above, our .eslintrc.json file looks like this:
 }
 ```
 
-### Coding style guides
+### Coding style guides (optional)
 
 You might have noticed one of the questions during the eslint init process was this:
 
@@ -342,6 +342,48 @@ Which results in:
 
 ✖ 1 problem (1 error, 0 warnings)
   1 error and 0 warnings potentially fixable with the `--fix` option.
+```
+
+> [!WARNING]
+> When installing the Airbnb option, I've noticed eslint needs to have the .ts file extension passed:
+>
+> ```bash
+> npx eslint src --ext .ts
+> ```
+
+Create a script for this in the `compose.json` so we can conveniently call it:
+
+```json
+"scripts": {
+  ...
+  "lint": "eslint src --ext .ts"
+},
+```
+
+Note that if you run the npm script and issues are found, you will see the following npm error message appended below the eslint output:
+
+```bash
+> eslint src --ext .ts
+
+
+/home/user/dev/test/src/index.ts
+  1:1   warning  Unexpected console statement        no-console
+  1:21  error    Missing whitespace after semicolon  semi-spacing
+  1:22  error    Unnecessary semicolon               no-extra-semi
+
+✖ 3 problems (2 errors, 1 warning)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! test@1.0.0 lint: `eslint src --ext .ts`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the test@1.0.0 lint script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/user/.npm/_logs/2021-08-18T15_27_55_318Z-debug.log
 ```
 
 ### Adding linting rules
