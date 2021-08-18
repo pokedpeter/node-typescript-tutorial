@@ -1,6 +1,7 @@
 # Tutorial start
 
 ### Changelog
+- 2021/08/18 - Add some info about Airbnb option
 - 2021/08/10 - Add section on ESLint style guides
 - 2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
 
