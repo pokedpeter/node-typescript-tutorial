@@ -361,7 +361,7 @@ Create a script for this in the `compose.json` so we can conveniently call it:
 },
 ```
 
-Note that if you run the npm script and issues are found, you will see the following npm error message appended below the eslint output:
+Applicable only when on npm < v7 but note that if you run the npm script and issues are found, you will see the following npm error message appended below the eslint output:
 
 ```bash
 > eslint src --ext .ts
@@ -386,6 +386,8 @@ npm ERR! This is probably not a problem with npm. There is likely additional log
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /home/user/.npm/_logs/2021-08-18T15_27_55_318Z-debug.log
 ```
+
+I do not see the npm error when on npm v7 (eg. when using Node 16.6.2)
 
 ### Adding linting rules
 
