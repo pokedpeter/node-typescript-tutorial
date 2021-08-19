@@ -541,7 +541,11 @@ src/index.ts 279ms
 
 Given both ESLint and Prettier can format code, you can expect some conflicts to occur. Prettier has created rules specifically for ESLint that basically disables any rules that are unnecessary or conflicting when combined with Prettier.
 
-The first is a plugin which runs Prettier as a ESLint rule and reports differences as individual ESLint issues.
+The first one is `eslint-config-prettier`: 
+
+https://github.com/prettier/eslint-config-prettier
+
+This config turns off all rules that are unnecessary or conflict with Prettier. Install it with the following command:
 
 ```bash
 npm install --save-dev eslint-config-prettier
@@ -549,12 +553,10 @@ npm install --save-dev eslint-config-prettier
 
 Then, add it to the last line of your `extends` section in the ESLint config, `.eslintrc.json`:
 
-Since we are using Typescript, we'll need another plugin to add. Include it after `prettier`.
-
 ```javascript
 {
   "extends": [
-    "eslint:recommended",
+    "eslint:recommended", 
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "prettier" // <-- Add this
@@ -574,6 +576,27 @@ If all goes well, you should get the following respone:
 No rules that are unnecessary or conflict with Prettier were found.
 ```
 
+Next one to install is `eslint-plugin-prettier`:
+
+https://github.com/prettier/eslint-plugin-prettier
+
+Runs Prettier as an ESLint rule and reports differences as individual ESLint issues. Install it with the following command:
+
+```bash
+npm install --save-dev eslint-plugin-prettier
+```
+
+Then update your `.eslintrc.json` file as follows:
+
+```json
+{
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+
 ## Install VSCode plugins
 
 ### ESLint
@@ -589,6 +612,12 @@ Search for the below plugin:
 `Prettier - Code formatter` - by Prettier
 
 Press `Ctrl + Shift + I` to format code. You'll be prompted to select the default formatter. Select Prettier as your default.
+
+### Prettier ESLint
+
+Search for the below plugin:
+
+`Prettier ESLint` - by Rebecca Vest
 
 ## Add Node scripts
 
