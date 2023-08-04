@@ -1,6 +1,7 @@
 # Tutorial start
 
 ### Changelog
+- 2023/08/04 - Fix typo referencing incorrect filename
 - 2021/08/18 - Add some info about Airbnb option
 - 2021/08/10 - Add section on ESLint style guides
 - 2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
@@ -352,7 +353,7 @@ Which results in:
 > npx eslint src --ext .ts
 > ```
 
-Create a script for this in the `compose.json` so we can conveniently call it:
+Create a script for this in the `package.json` so we can conveniently call it:
 
 ```json
 "scripts": {
