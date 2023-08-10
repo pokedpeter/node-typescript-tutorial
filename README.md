@@ -1,25 +1,15 @@
-# Tutorial start
+*Coming from Github? A better viewing experience of this tutorial can be had at the site below: https://pokedpeter.dev*
 
-### Changelog
-- 2023/08/04 - Fix typo referencing incorrect filename
-- 2021/08/18 - Add some info about Airbnb option
-- 2021/08/10 - Add section on ESLint style guides
-- 2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
+# Welcome!
 
-## Welcome!
+**This tutorial will show you how to build a barebones Node (Javascript) project from scratch with the following goodies:**
+  - **Typescript** - for type checking
+  - **Nodemon** - for automatic project reload when you make code changes 
+  - **ESLint** - for checking code quality and optionally, fixing it
+  - **Pretter** - for code formatting
+  - **Docker** - for app containerization to have a consistent deployment environment
 
-Coming from Github? A better viewing experience of this tutorial can be had at the site below:
-
-https://pokedpeter.dev
-
-This guide will show you how to build a barebones Node project from scratch with the following goodies:
-  - Typescript support
-  - App containerization with Docker
-  - Code reload with Nodemon
-  - Code quality checking with ESLint
-  - Code formatting with Prettier
-
-Pre-requisites:
+**Pre-requisites:**
 
 - Node is installed.
 - Docker is installed
@@ -38,7 +28,7 @@ cd project
 npm init
 ```
 
-A file called package.json will be set up with the options you chose. You can skip the options by running `npm init -y`
+A file called `package.json` will be set up with the options you chose. You can skip the interface options and go with the defaults by running `npm init -y`
 
 ```json
 {
@@ -73,7 +63,67 @@ node index.js
 
 Which gives you some console output:
 
-    Hello World
+```
+Hello World
+```
+
+### Install packages
+
+Javascript doesn't come with any standard libraries built-in. The recommended approach is to install npm packages. Let's try an example. We'll install [Lodash](https://lodash.com), a popular library of handy utilities.
+
+```
+npm install lodash
+```
+
+Here's the output:
+
+```
+added 1 package, and audited 4 packages in 987ms
+
+found 0 vulnerabilities
+```
+
+Now that we've intalled Lodash we can now use it in our app. Open up `index.js` again and update to match:
+
+```
+const _ = require('lodash);
+
+console.log(_.snakeCase('Hello World'));
+```
+
+Run it and you'll see the following output:
+
+```
+hello_world
+```
+
+View the `package.json` file again and notice the new `dependencies` section with the lodash entry:
+
+```json
+"dependencies": {
+  "lodash": "^4.17.21"
+}
+```
+
+> [!TIP]
+> To quickly view the file contents from the cli, type: `cat package.json` 
+
+View your project files and notice a `node_modules` folder has been created:
+
+```bash
+$ ls -l
+index.js
+node_modules
+package-lock.json
+package.json
+```
+
+This folder is where your dependencies are stored. Let's check them out:
+
+```bash
+$ ls node_modules
+@types  lodash  typescript
+```
 
 ## Typescript setup
 
@@ -91,23 +141,37 @@ Install Typescript type definitions for Node:
 npm install --save-dev @types/node
 ```
 
-Have a look at the dependencies in `package.json`:
+> [!TIP]
+> Install multiple packages in one go by combining them on a single line: `npm install --save-dev typescript @types/node` 
+
+Have a look at the dependencies in `package.json`. Here's the relevant portion:
 
 ```json
 {
   "devDependencies": {
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
-  },
-  "dependencies": {
+    "@types/node": "^20.4.9",
+    "typescript": "^5.1.6"
   }
 }
 ```
 
-Initialise typescript by running the following command anywhere within your project. This will create a `tsconfig.json` file with default settings:
+Initialise typescript by running the following command anywhere within your project.
 
 ```bash
 npx tsc --init
+```
+
+This will create a `tsconfig.json` file with default settings:
+
+```
+Created a new tsconfig.json with:
+
+  target: es2016
+  module: commonjs
+  strict: true
+  esModuleInterop: true
+  skipLibCheck: true
+  forceConsistentCasingInFileNames: true
 ```
 
 We use `npx` which executes locally installed binaries that have been installed via `package.json`.
@@ -838,4 +902,11 @@ A big thanks to the following for helping me create this tutorial.
 - Hosting on [Netlify](https://www.netlify.com/)
 - Alerts plugin for Docsify: https://github.com/fzankl/docsify-plugin-flexible-alerts
 
+## Changelog
+
+- 2023/08/11 - Updated Javascript section with more content
+- 2023/08/04 - Fix typo referencing incorrect filename
+- 2021/08/18 - Add some info about Airbnb option
+- 2021/08/10 - Add section on ESLint style guides
+- 2021/08/09 - Updated section on eslint-config-prettier due to v8 changes
 
